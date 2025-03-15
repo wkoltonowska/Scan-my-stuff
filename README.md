@@ -1,38 +1,17 @@
-# Inteligentny System Skanowania Kodów Kreskowych z Integracją Chmurową - Scan My Stuff
+# Scan My Stuff - Zarys biznesowy
+## Tytuł:
+Inteligentny system skanowania kodów kreskowych z integracją chmurową
 
-## Opis Projektu
-Projekt zakłada stworzenie nowoczesnego narzędzia dla firm wymagających szybkiej i bezbłędnej rejestracji produktów, dostaw oraz innych zasobów. Aplikacja przeznaczona na skaner Honeywell EDA51 (Android 10) umożliwia skanowanie kodów kreskowych i automatyczne przesyłanie danych do chmury Azure za pomocą REST API. Zebrane dane są przechowywane w bazie SQL na platformie Azure, co pozwala na ich analizę i efektywne wykorzystanie w procesach biznesowych.
+## Opis projektu:
+Projekt zakłada stworzenie rozwiązania dla firm, które wymagają szybkiego i bezbłędnego rejestrowania produktów, dostaw lub innych zasobów. Aplikacja na skanerze Honeywell EDA51 (Android 10) pozwala na skanowanie kodów kreskowych i przesyłanie danych do chmury Azure przez REST API. Następnie dane są przechowywane w bazie SQL na Azure, co umożliwia ich późniejszą analizę i wykorzystanie w procesach biznesowych.
 
-## Grupa Docelowa
-Nasze rozwiązanie jest przeznaczone dla:
-- Firm logistycznych
-- Magazynów i centrów dystrybucyjnych
-- Sprzedawców detalicznych
+## Grupa docelowa:
+-	Firmy logistyczne
+-	Magazyny i centra dystrybucyjne
+-	Sprzedawcy detaliczni
 
-## Kluczowe Korzyści
-### 💡 Efektywność
-Automatyczne przesyłanie danych eliminuje potrzebę ręcznego wprowadzania, co przyspiesza rejestrację produktów.
-
-### 💪 Redukcja Błędów
-Skanowanie i natychmiastowe przesyłanie danych minimalizuje ryzyko pomyłek wynikających z czynnika ludzkiego.
-
-### 🌍 Dostępność Danych
-Dane przechowywane w chmurze Azure są dostępne w czasie rzeczywistym z dowolnego miejsca na świecie.
-
-### ✨ Skalowalność
-System może być łatwo dostosowany do rosnących potrzeb biznesowych.
-
-## Technologie
-- **Urządzenie**: Honeywell EDA51 (Android 10)
-- **Backend**: REST API
-- **Chmura**: Microsoft Azure
-- **Baza danych**: SQL Azure
-
-## Instalacja i Konfiguracja
-1. Pobierz i zainstaluj aplikację na urządzeniu Honeywell EDA51.
-2. Skonfiguruj połączenie z REST API w ustawieniach aplikacji.
-3. Zaloguj się do chmury Azure i upewnij się, że baza danych jest gotowa do użycia.
-4. Rozpocznij skanowanie kodów kreskowych i monitoruj dane w chmurze.
-
-## Wsparcie
-Jeśli masz pytania lub potrzebujesz pomocy, skontaktuj się z nami pod adresem [adres e-mail lub strona internetowa].
+## Korzyści biznesowe:
+-	Szybsza i bardziej efektywna rejestracja produktów – automatyczne przesyłanie danych eliminuje potrzebę ręcznego wprowadzania.
+-	Mniej błędów ludzkich – skanowanie i natychmiastowe przesyłanie danych minimalizuje ryzyko pomyłek.
+-	Łatwy dostęp do danych – przechowywanie w chmurze Azure umożliwia szybkie pobieranie informacji z dowolnego miejsca.
+-	Skalowalność – rozwiązanie można łatwo dostosować do rosnących potrzeb firmy.

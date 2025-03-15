@@ -11,7 +11,7 @@ Projekt zakłada stworzenie rozwiązania dla firm, które wymagają szybkiego i 
 -	Sprzedawcy detaliczni
 
 ## Korzyści biznesowe:
--	Szybsza i bardziej efektywna rejestracja produktów – automatyczne przesyłanie danych eliminuje potrzebę ręcznego wprowadzania.
--	Mniej błędów ludzkich – skanowanie i natychmiastowe przesyłanie danych minimalizuje ryzyko pomyłek.
--	Łatwy dostęp do danych – przechowywanie w chmurze Azure umożliwia szybkie pobieranie informacji z dowolnego miejsca.
--	Skalowalność – rozwiązanie można łatwo dostosować do rosnących potrzeb firmy.
+-	**Szybsza i bardziej efektywna rejestracja produktów** – automatyczne przesyłanie danych eliminuje potrzebę ręcznego wprowadzania.
+-	**Mniej błędów ludzkich** – skanowanie i natychmiastowe przesyłanie danych minimalizuje ryzyko pomyłek.
+-	**Łatwy dostęp do danych** – przechowywanie w chmurze Azure umożliwia szybkie pobieranie informacji z dowolnego miejsca.
+-	**Skalowalność** – rozwiązanie można łatwo dostosować do rosnących potrzeb firmy.

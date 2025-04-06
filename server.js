@@ -1,6 +1,6 @@
 console.log("🔄 Starting app... Environment variables:");
 console.log({
-  PORT: process.env.PORT,
+  port: process.env.PORT,
   COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING",
   COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "MISSING"
 });
@@ -105,6 +105,6 @@ app.use((req, res) => {
 });
 
 //  **Uruchomienie serwera**
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on http://localhost:${port}`);
 });

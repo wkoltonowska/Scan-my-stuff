@@ -1,12 +1,13 @@
+
+require("dotenv").config();
+
 console.log("🔄 Starting app... Environment variables:");
 console.log({
-  port: process.env.PORT,
+  port: process.env.port,
   COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING",
   COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "MISSING"
 });
 
-
-require("dotenv").config();
 
 const requiredEnvVars = ['COSMOS_DB_ENDPOINT', 'COSMOS_DB_KEY', 'COSMOS_DB_DATABASE', 'COSMOS_DB_CONTAINER'];
 for (const envVar of requiredEnvVars) {

@@ -1,9 +1,13 @@
+console.log("🔄 Starting app..."); // Debug 1
+console.log("Endpoint:", process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING"); // Debug 2
+
+
 require("dotenv").config();
 
 const requiredEnvVars = ['COSMOS_DB_ENDPOINT', 'COSMOS_DB_KEY', 'COSMOS_DB_DATABASE', 'COSMOS_DB_CONTAINER'];
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {
-    console.error(`❌ Brak wymaganej zmiennej środowiskowej: ${envVar}`);
+    console.error(` Brak wymaganej zmiennej środowiskowej: ${envVar}`);
     process.exit(1); // Zakończ aplikację, jeśli brakuje kluczowych zmiennych
   }
 }
@@ -33,12 +37,12 @@ const container = database.container(process.env.COSMOS_DB_CONTAINER);
 
 app.use(bodyParser.json());
 
-// ✅ **Strona główna API**
+//  **Strona główna API**
 app.get("/", (req, res) => {
   res.send("🚀 Scan My Stuff API is running! Go to /barcodes to see stored data.");
 });
 
-// 🚀 **Dodanie nowego kodu kreskowego**
+//  **Dodanie nowego kodu kreskowego**
 app.post("/barcode", async (req, res) => {
   try {
     const { barcode, description } = req.body;
@@ -54,7 +58,7 @@ app.post("/barcode", async (req, res) => {
   }
 });
 
-// 🔍 **Pobranie wszystkich kodów kreskowych**
+//  **Pobranie wszystkich kodów kreskowych**
 app.get("/barcodes", async (req, res) => {
   try {
     const { resources } = await container.items.readAll().fetchAll();
@@ -65,7 +69,7 @@ app.get("/barcodes", async (req, res) => {
   }
 });
 
-// ✏️ **Aktualizacja kodu kreskowego**
+//  **Aktualizacja kodu kreskowego**
 app.put("/barcode/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -84,7 +88,7 @@ app.put("/barcode/:id", async (req, res) => {
   }
 });
 
-// ❌ **Usunięcie kodu kreskowego**
+//  **Usunięcie kodu kreskowego**
 app.delete("/barcode/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -97,12 +101,12 @@ app.delete("/barcode/:id", async (req, res) => {
   }
 });
 
-// ✅ **Obsługa nieistniejących endpointów**
+// **Obsługa nieistniejących endpointów**
 app.use((req, res) => {
   res.status(404).json({ error: "Not Found" });
 });
 
-// 🚀 **Uruchomienie serwera**
+//  **Uruchomienie serwera**
 app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

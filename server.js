@@ -1,5 +1,9 @@
-console.log("🔄 Starting app..."); // Debug 1
-console.log("Endpoint:", process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING"); // Debug 2
+console.log("🔄 Starting app... Environment variables:");
+console.log({
+  PORT: process.env.PORT,
+  COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING",
+  COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "MISSING"
+});
 
 
 require("dotenv").config();
@@ -12,19 +16,13 @@ for (const envVar of requiredEnvVars) {
   }
 }
 
-require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const { CosmosClient } = require("@azure/cosmos");
-
-
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const { CosmosClient } = require("@azure/cosmos");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // Połączenie z Azure Cosmos DB
 const cosmosClient = new CosmosClient({
@@ -39,7 +37,7 @@ app.use(bodyParser.json());
 
 //  **Strona główna API**
 app.get("/", (req, res) => {
-  res.send("🚀 Scan My Stuff API is running! Go to /barcodes to see stored data.");
+  res.send("Scan My Stuff API is running! Go to /barcodes to see stored data.");
 });
 
 //  **Dodanie nowego kodu kreskowego**
@@ -107,6 +105,6 @@ app.use((req, res) => {
 });
 
 //  **Uruchomienie serwera**
-app.listen(port, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://localhost:${port}`);
 });

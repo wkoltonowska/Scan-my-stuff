@@ -1,4 +1,20 @@
 require("dotenv").config();
+
+const requiredEnvVars = ['COSMOS_DB_ENDPOINT', 'COSMOS_DB_KEY', 'COSMOS_DB_DATABASE', 'COSMOS_DB_CONTAINER'];
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    console.error(`❌ Brak wymaganej zmiennej środowiskowej: ${envVar}`);
+    process.exit(1); // Zakończ aplikację, jeśli brakuje kluczowych zmiennych
+  }
+}
+
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const { CosmosClient } = require("@azure/cosmos");
+
+
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const { CosmosClient } = require("@azure/cosmos");

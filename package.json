@@ -2,13 +2,14 @@
   "name": "azure",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "echo \"No tests defined\""
   },
    "engines": {
-    "node": "20.x"  
+    "node": "20.x",
+    "npm": ">=11.2.0"  
   },
   "keywords": [],
   "author": "",

@@ -8,7 +8,7 @@ process.on('unhandledRejection', (err) => {
 
 console.log("🔄 Starting app... Environment variables:");
 console.log({
-  port: process.env.port,
+  port: process.env.PORT,
   COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING",
   COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "MISSING"
 });
@@ -28,7 +28,7 @@ const bodyParser = require("body-parser");
 const { CosmosClient } = require("@azure/cosmos");
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // Połączenie z Azure Cosmos DB
 const cosmosClient = new CosmosClient({

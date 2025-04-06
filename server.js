@@ -1,6 +1,11 @@
 
 require("dotenv").config();
 
+process.on('unhandledRejection', (err) => {
+  console.error('UNHANDLED REJECTION:', err);
+  process.exit(1);
+});
+
 console.log("🔄 Starting app... Environment variables:");
 console.log({
   port: process.env.port,
@@ -107,5 +112,7 @@ app.use((req, res) => {
 
 //  **Uruchomienie serwera**
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`🚀 Server running (Azure-compatible)`);
+}).on('error', (err) => {
+  console.error('SERVER ERROR:', err);
 });

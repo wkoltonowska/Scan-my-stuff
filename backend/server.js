@@ -112,7 +112,7 @@ app.use((req, res) => {
 
 // Uruchomienie serwera
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running (Azure-compatible)`);
+  console.log(`Serwer uruchomiony (kompatybilny z Azure)`);
 }).on('error', (err) => {
-  console.error('SERVER ERROR:', err);
+  console.error('BŁĄD SERWERA', err);
 });

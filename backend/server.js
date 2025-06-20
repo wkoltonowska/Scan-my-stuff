@@ -1,5 +1,5 @@
 
-require("dotenv/lib/main").config();
+require("dotenv").config();
 
 process.on('unhandledRejection', (err) => {
   console.error('UNHANDLED REJECTION:', err);
@@ -9,11 +9,11 @@ process.on('unhandledRejection', (err) => {
 console.log("Uruchamianie aplikacji. Zmienne środowiskowe:");
 console.log({
   port: process.env.PORT,
-  COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "MISSING",
-  COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "MISSING"
+  COSMOS_ENDPOINT: process.env.COSMOS_DB_ENDPOINT ? "OK" : "BRAK",
+  COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "BRAK"
 });
 
-//Weryfikacja, czy są kluczowe zmienne
+//Weryfikacja, czy są wprowadzone kluczowe zmienne
 const requiredEnvVars = ['COSMOS_DB_ENDPOINT', 'COSMOS_DB_KEY', 'COSMOS_DB_DATABASE', 'COSMOS_DB_CONTAINER'];
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {

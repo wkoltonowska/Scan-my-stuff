@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         working-directory: ./backend
         run: |
-          npm install --production
+          cd backend && npm install --production
           npm cache clean --force
 
       - name: Build

@@ -21,11 +21,13 @@ jobs:
           node-version: '20.x'
 
       - name: Install dependencies
+        working-directory: ./backend
         run: |
           npm install --production
           npm cache clean --force
 
       - name: Build
+        working-directory: ./backend
         run: |
           npm run build --if-present
           echo "PORT=8080" >> .env
@@ -74,6 +76,5 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'scan-my-stuff-app'  # TYLKO nazwa aplikacji
-          # USUŃ slot-name - to kluczowa zmiana!
+          app-name: 'scan-my-stuff-app'  
           package: .

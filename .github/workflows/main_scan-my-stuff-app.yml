@@ -33,13 +33,13 @@ jobs:
           echo "PORT=8080" >> .env
           echo "NODE_ENV=production" >> .env
 
-      - name: Zip artifact for deployment
+      - name: Zip artifact
         run: |
-          mkdir -p release
-          cp -r backend/* release/
+          mkdir -p release/backend
+          cp -r backend/server.js backend/package.json backend/package-lock.json release/backend/
+          cd backend && npm install --production
+          cp -r backend/node_modules release/backend/
           cd release && zip -r ../release.zip ./*
-
-
 
 
       - name: Upload artifact for deployment job

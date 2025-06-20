@@ -38,8 +38,8 @@ jobs:
           mkdir -p release/backend
           cp -r backend/server.js backend/package.json backend/package-lock.json release/backend/
           cd backend && npm install --production
-          cp -r backend/node_modules release/backend/
-          cd release && zip -r ../release.zip ./*
+          cp -r node_modules ../release/backend/
+          cd ../release && zip -r ../release.zip ./*
 
 
       - name: Upload artifact for deployment job

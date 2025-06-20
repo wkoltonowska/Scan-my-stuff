@@ -35,10 +35,9 @@ jobs:
 
       - name: Zip artifact for deployment
         run: |
-          mkdir -p release
-          cp -r backend/* release/
-          cp -r backend/node_modules release/
-          cd release && zip -r ../release.zip ./*
+          cd backend
+          zip -r ../release.zip ./*
+
 
 
       - name: Upload artifact for deployment job

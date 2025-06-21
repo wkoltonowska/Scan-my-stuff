@@ -35,14 +35,14 @@ jobs:
 
       - name: Build frontend
         working-directory: ./frontend
-        run: npm install && npm run build
+        run: cd . && cd frontend && npm install && npm run build
 
 
       - name: Copy backend and frontend/public for deployment
         run: |
           mkdir -p release
           cp -r backend/* release/
-          cp -r frontend/* release/
+          cp -r frontend/public/* release/public/
           cd release && zip -r ../release.zip ./*
 
 

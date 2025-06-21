@@ -18,8 +18,11 @@ jobs:
       # Kopiowanie frontend (statyczne pliki)
       - name: Copy frontend static files to backend
         run: |
-          mkdir -p backend/frontend-public
-          cp -r frontend/public/* backend/frontend-public/
+            mkdir -p backend/frontend-public
+            cp -r frontend/public/. backend/frontend-public/
+
+      - name: Debug check copied frontend contents
+        run: ls -R backend/frontend-public
 
       # Instalacja zależności backendu
       - name: Install backend dependencies

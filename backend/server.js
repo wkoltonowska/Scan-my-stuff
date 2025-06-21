@@ -13,6 +13,12 @@ console.log({
   COSMOS_KEY: process.env.COSMOS_DB_KEY ? "OK" : "BRAK"
 });
 
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+
 //Weryfikacja, czy są wprowadzone kluczowe zmienne
 const requiredEnvVars = ['COSMOS_DB_ENDPOINT', 'COSMOS_DB_KEY', 'COSMOS_DB_DATABASE', 'COSMOS_DB_CONTAINER'];
 for (const envVar of requiredEnvVars) {

@@ -52,8 +52,6 @@ const pathFrontend = path.join(__dirname, 'public');
 app.use(bodyParser.json());
 app.use(express.static(pathFrontend));
 
-// Strona główna API
-//const pathFrontend = path.join(__dirname, '..', 'frontend' , 'public')
 
 // Serwowanie statycznych plików z folderu public
 app.use(express.static(pathFrontend));
@@ -76,7 +74,7 @@ app.post("/barcode", async (req, res) => {
     res.status(201).json({ message: "Kod kreskowy został dodany", data: resource });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Błąd serwera" });
+    res.status(500).json({ error: JSON.stringify(error) });
   }
 });
 

@@ -14,9 +14,6 @@ console.log({
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 
 //Weryfikacja, czy są wprowadzone kluczowe zmienne
@@ -46,7 +43,11 @@ const cosmosClient = new CosmosClient({
 const database = cosmosClient.database(process.env.COSMOS_DB_DATABASE);
 const container = database.container(process.env.COSMOS_DB_CONTAINER);
 
-const pathFrontend = path.join(__dirname, 'frontend-public');
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+const pathFrontend = path.join(__dirname, 'public');
 
 app.use(bodyParser.json());
 app.use(express.static(pathFrontend));
@@ -58,12 +59,8 @@ app.use(express.static(pathFrontend));
 app.use(express.static(pathFrontend));
 
 // Domyślna ścieżka '/' będzie serwować index.html
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(pathFrontendname, 'index.html'));
-// });
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(pathFrontend, 'index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(pathFrontendname, 'index.html'));
 });
 
 
@@ -82,6 +79,10 @@ app.post("/barcode", async (req, res) => {
     res.status(500).json({ error: "Błąd serwera" });
   }
 });
+
+app.get('/debug', (req, res)=>{
+  res.send(pathFrontend)
+})
 
 // Pobranie wszystkich kodów kreskowych
 app.get("/barcodes", async (req, res) => {

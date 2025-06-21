@@ -13,34 +13,21 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-
-      # --- FRONTEND ---
-      - name: Install frontend dependencies
-        working-directory: ./frontend
-        run: npm install
-
-      - name: Build frontend
-        working-directory: ./frontend
-        run: npm run build
-
-      - name: Copy frontend build to backend/frontend-public
+      # Kopiowanie frontend (statyczne pliki)
+      - name: Copy frontend static files to backend
         run: |
           mkdir -p backend/frontend-public
-          cp -r frontend/build/* backend/frontend-public/
+          cp -r frontend/public/* backend/frontend-public/
 
-      # --- BACKEND ---
+      # Instalacja zależności backendu
       - name: Install backend dependencies
         working-directory: ./backend
         run: npm install --production
 
-      - name: Create .env file
+      # Tworzenie pliku .env z sekretami
+      - name: Create production .env
         working-directory: ./backend
         run: |
           echo "PORT=8080" >> .env
@@ -50,14 +37,19 @@ jobs:
           echo "COSMOS_DB_DATABASE=${{ secrets.COSMOS_DB_DATABASE }}" >> .env
           echo "COSMOS_DB_CONTAINER=${{ secrets.COSMOS_DB_CONTAINER }}" >> .env
 
-      # --- PAKOWANIE ---
-      - name: Package backend with frontend
+      # (opcjonalnie) budowanie backendu, jeśli masz skrypt build
+      - name: Build backend (optional)
+        working-directory: ./backend
+        run: npm run build --if-present
+
+      # Przygotowanie paczki do wdrożenia
+      - name: Prepare release package
         run: |
           mkdir -p release
           cp -r backend/* release/
           cd release && zip -r ../release.zip ./*
 
-      - name: Upload artifact
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
@@ -74,12 +66,12 @@ jobs:
       contents: read
 
     steps:
-      - name: Download artifact
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: node-app
 
-      - name: Unzip artifact
+      - name: Unzip artifact for deployment
         run: unzip release.zip
 
       - name: Login to Azure
@@ -87,7 +79,7 @@ jobs:
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2827832A9C2B4537A3C801ADFC2EAE91 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2FBDBB84AE64C899741CE5F755FE34D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0772BC6000D541468FC5A5C064CB1CB3 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0772BC6000D541468FC5A5C064CB3 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp

@@ -40,18 +40,26 @@ const cosmosClient = new CosmosClient({
 const database = cosmosClient.database(process.env.COSMOS_DB_DATABASE);
 const container = database.container(process.env.COSMOS_DB_CONTAINER);
 
+const pathFrontend = path.join(__dirname, 'frontend-public');
+
 app.use(bodyParser.json());
+app.use(express.static(pathFrontend));
 
 // Strona główna API
-const pathFrontend = path.join(__dirname, '..', 'frontend' , 'public')
+//const pathFrontend = path.join(__dirname, '..', 'frontend' , 'public')
 
 // Serwowanie statycznych plików z folderu public
 app.use(express.static(pathFrontend));
 
 // Domyślna ścieżka '/' będzie serwować index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(pathFrontendname, 'index.html'));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(pathFrontendname, 'index.html'));
+// });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(pathFrontend, 'index.html'));
 });
+
 
 // Dodanie nowego kodu kreskowego
 app.post("/barcode", async (req, res) => {

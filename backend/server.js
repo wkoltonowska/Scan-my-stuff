@@ -43,8 +43,7 @@ const container = database.container(process.env.COSMOS_DB_CONTAINER);
 app.use(bodyParser.json());
 
 // Strona główna API
-app.use(express.static(path.join(__dirname, 'public')));
-
+const pathFrontend = path.join(__dirname, '..', 'frontend' , 'public')
 
 // Serwowanie statycznych plików z folderu public
 app.use(express.static(pathFrontend));

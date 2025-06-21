@@ -90,4 +90,3 @@ jobs:
         with:
           app-name: 'scan-my-stuff-app'
           package: .
-

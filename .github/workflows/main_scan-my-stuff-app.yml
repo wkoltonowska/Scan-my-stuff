@@ -18,11 +18,11 @@ jobs:
       # Kopiowanie frontend (statyczne pliki)
       - name: Copy frontend static files to backend
         run: |
-            mkdir -p backend/frontend-public
-            cp -r frontend/public/. backend/frontend-public/
+            mkdir -p backend/public
+            cp -r frontend/public/. backend/public/
 
       - name: Debug check copied frontend contents
-        run: ls -R backend/frontend-public
+        run: ls -R backend/public
 
       # Instalacja zależności backendu
       - name: Install backend dependencies
@@ -80,9 +80,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-        client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2827832A9C2B4537A3C801ADFC2EAE91 }}
-        tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2FBDBB84AE64C899741CE5F755FE34D }}
-        subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0772BC6000D541468FC5A5C064CB1CB3 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2827832A9C2B4537A3C801ADFC2EAE91 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2FBDBB84AE64C899741CE5F755FE34D }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0772BC6000D541468FC5A5C064CB1CB3 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -90,4 +90,3 @@ jobs:
         with:
           app-name: 'scan-my-stuff-app'
           package: .
-

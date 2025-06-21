@@ -24,6 +24,7 @@ for (const envVar of requiredEnvVars) {
 
 
 const express = require("express");
+const path = require('path');
 const bodyParser = require("body-parser");
 const { CosmosClient } = require("@azure/cosmos");
 
@@ -42,8 +43,14 @@ const container = database.container(process.env.COSMOS_DB_CONTAINER);
 app.use(bodyParser.json());
 
 // Strona główna API
-app.get("/", (req, res) => {
-  res.send("Aplikacja Scan My Stuff działa - sprawdź dane pod /barcodes.");
+const pathFrontend = path.join(__dirname, '..', 'frontend' , 'public')
+
+// Serwowanie statycznych plików z folderu public
+app.use(express.static(pathFrontend));
+
+// Domyślna ścieżka '/' będzie serwować index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(pathFrontendname, 'index.html'));
 });
 
 // Dodanie nowego kodu kreskowego

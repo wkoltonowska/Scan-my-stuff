@@ -35,7 +35,7 @@ jobs:
 
       - name: Build frontend
         working-directory: ./frontend
-        run: cd . && cd frontend && npm install && npm run build
+        run: npm install && npm run build
 
 
       - name: Copy backend and frontend/public for deployment

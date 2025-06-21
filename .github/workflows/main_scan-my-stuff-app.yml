@@ -33,11 +33,16 @@ jobs:
           echo "PORT=8080" >> .env
           echo "NODE_ENV=production" >> .env
 
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm install && npm run build
+
+
       - name: Copy backend and frontend/public for deployment
         run: |
           mkdir -p release
           cp -r backend/* release/
-          cp -r frontend/public release/public
+          cp -r frontend/* release/
           cd release && zip -r ../release.zip ./*
 
 

@@ -69,7 +69,7 @@ app.post("/barcode", async (req, res) => {
     const { barcode, description } = req.body;
     if (!barcode) return res.status(400).json({ error: "Kod kreskowy jest wymagany" });
 
-    const item = { id: barcode, barcode, description: description || "Brak opisu" };
+    const item = { id: uuidv4(), barcode, description: description || "Brak opisu" };
     const { resource } = await container.items.create(item);
 
     res.status(201).json({ message: "Kod kreskowy został dodany", data: resource });

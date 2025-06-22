@@ -32,7 +32,7 @@ body {
     width: 100%;
     padding: 10em;
     color: white;
-    
+    text-align: center;
 }
 
 .main-title{
@@ -91,6 +91,7 @@ body {
 
 img{
     width: 100%;
+    height: auto;
     margin: 0;
 }
 
@@ -104,3 +105,30 @@ img{
         opacity: 75%;
 	
 }
+
+/* @media (min-width: 576px) {
+	
+}*/
+
+@media (max-width: 768px) {
+    .text-container{
+         padding: 10em 3em;
+    }
+		.main-title{
+    font-size: 3rem;}
+    .main-text{
+   font-size: 1.5rem;}
+
+   .input-box{
+    padding: 1em 2em;
+   }
+
+}
+
+@media (max-width: 1024px) {
+	img{
+    height:100vh;
+    width: 100wv;
+    
+}
+} 

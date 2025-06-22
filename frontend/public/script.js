@@ -30,9 +30,11 @@ function submitBarcode() {
     .then(data => {
         console.log('Odpowiedź z serwera:', data);
         alert('Kod został wysłany pomyślnie!');
+        document.getElementById('barcode').value = '';
     })
     .catch(error => {
         console.error('Błąd:', error);
         alert('Wystąpił błąd podczas wysyłania kodu: ' + error.message);
     });
 }
+

@@ -59,7 +59,7 @@ app.use(express.static(pathFrontend));
 
 // Domyślna ścieżka '/' będzie serwować index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(pathFrontendname, 'index.html'));
+  res.sendFile(path.join(pathFrontendn, 'index.html'));
 });
 
 

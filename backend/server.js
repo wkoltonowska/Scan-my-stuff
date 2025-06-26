@@ -36,13 +36,12 @@ const { CosmosClient } = require("@azure/cosmos");
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:8080', // frontend
+  origin: 'http://localhost:8080', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
 
 
-const port = process.env.PORT || 3000;
 
 // Połączenie z Azure Cosmos DB
 const cosmosClient = new CosmosClient({
@@ -54,7 +53,7 @@ const database = cosmosClient.database(process.env.COSMOS_DB_DATABASE);
 const container = database.container(process.env.COSMOS_DB_CONTAINER);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Serwer działa na porcie ${PORT}`);
 });
 
 const pathFrontend = path.join(__dirname, 'public');
@@ -68,7 +67,7 @@ app.use(express.static(pathFrontend));
 
 // Domyślna ścieżka '/' będzie serwować index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(pathFrontendn, 'index.html'));
+  res.sendFile(path.join(pathFrontend, 'index.html'));
 });
 
 
@@ -141,8 +140,8 @@ app.use((req, res) => {
 });
 
 // Uruchomienie serwera
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Serwer uruchomiony (kompatybilny z Azure)`);
-}).on('error', (err) => {
-  console.error('BŁĄD SERWERA', err);
-});
+// app.listen(port, '0.0.0.0', () => {
+//   console.log(`Serwer uruchomiony (kompatybilny z Azure)`);
+// }).on('error', (err) => {
+//   console.error('BŁĄD SERWERA', err);
+// });

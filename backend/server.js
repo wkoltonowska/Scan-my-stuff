@@ -41,7 +41,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type']
 }));
 
-
+app.options('*', cors());
 
 // Połączenie z Azure Cosmos DB
 const cosmosClient = new CosmosClient({
@@ -139,9 +139,4 @@ app.use((req, res) => {
   res.status(404).json({ error: "Nie znaleziono" });
 });
 
-// Uruchomienie serwera
-// app.listen(port, '0.0.0.0', () => {
-//   console.log(`Serwer uruchomiony (kompatybilny z Azure)`);
-// }).on('error', (err) => {
-//   console.error('BŁĄD SERWERA', err);
-// });
+

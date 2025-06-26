@@ -1,6 +1,7 @@
 
 require("dotenv").config();
 const { v4: uuidv4 } = require('uuid');
+const cors = require('cors');
 
 process.on('unhandledRejection', (err) => {
   console.error('UNHANDLED REJECTION:', err);
@@ -33,6 +34,14 @@ const bodyParser = require("body-parser");
 const { CosmosClient } = require("@azure/cosmos");
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:8080', // frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
+
+
 const port = process.env.PORT || 3000;
 
 // Połączenie z Azure Cosmos DB

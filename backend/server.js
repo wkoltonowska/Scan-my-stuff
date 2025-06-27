@@ -134,6 +134,31 @@ app.delete("/barcode/:id", async (req, res) => {
   }
 });
 
+// Zliczanie ile produktów ma dany kod kreskowy
+app.get("/barcode/:barcode/count", async (req, res) => {
+  try {
+    const { barcode } = req.params;
+
+    const querySpec = {
+      query: "SELECT VALUE COUNT(1) FROM c WHERE c.barcode = @barcode",
+      parameters: [
+        { name: "@barcode", value: barcode }
+      ]
+    };
+
+    const { resources } = await container.items.query(querySpec).fetchAll();
+    const count = resources[0] || 0;
+
+    res.json({ barcode, count });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Błąd serwera" });
+  }
+});
+
+
+
+
 // Obsługa nieistniejących endpointów
 app.use((req, res) => {
   res.status(404).json({ error: "Nie znaleziono" });

@@ -56,6 +56,20 @@
       }
     },
     {
+      "name": "Count barcodes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/barcode/1234567890123/count",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["barcode", "1234567890123", "count"]
+    }
+  }
+},
+    {
       "name": "Delete barcode",
       "request": {
         "method": "DELETE",
